@@ -10,6 +10,9 @@ npm-debug.log
 # Nuxt generate
 dist
 
+# Config
+env.js
+
 .idea/
 #ignore thumbnails created by windows
 Thumbs.db
