@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const express = require('express')
 const app = express()
+const config = require('./config/env.js')
 const mysql = require('mysql')
 const md5 = require('MD5')
 const rest = require('./rest.js')
@@ -19,11 +20,11 @@ REST.prototype.connectMysql = function () {
   const self = this
   const pool = mysql.createPool({
     connectionLimit: 100,
-    host: 'localhost',
-    user: 'root',
-    password: 'keitarou',
-    database: 'client_manager',
-    debug: false
+    host: config.ENV.HOST,
+    user: config.ENV.USER,
+    password: config.ENV.PASSWORD,
+    database: config.ENV.DATABASE,
+    debug: config.ENV.DEBUG
   })
   pool.getConnectionAsync(function (err, connection) {
     if (err) {
